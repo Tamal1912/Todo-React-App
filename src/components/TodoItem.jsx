@@ -1,13 +1,11 @@
 import React from 'react'
 
-const TodoItem2 = () => {
+const TodoItem = ({todoName,todoDate}) => {
+     
 
-  let todoName='Go To College';
-  let todoDate='4/10/23';
   return (
-    
 
-<div className="mt-4  pr-2 row text-white">
+    <div className="mt-4  pr-2  row text-white">
     <div className="col-6">
      <h2>{todoName}</h2>
     </div>
@@ -18,7 +16,9 @@ const TodoItem2 = () => {
     <button className="btn btn-error text-white">Delete</button>
   </div>
 </div>
+
+
   )
 }
 
-export default TodoItem2 
+export default TodoItem;
