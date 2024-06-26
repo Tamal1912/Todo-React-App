@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TodoItem from './TodoItem'
 
-const TodoLists = ({items}) => {
+const TodoLists = ({items,onDelete}) => {
+   
+  let [currentItem,setCurrentItem]=useState([items])
+   
+ 
+
   return (
     <>
-    {items.map(item => <TodoItem todoName={item.name} todoDate={item.date}></TodoItem>)}
+    {items.map(item =>
+     <TodoItem 
+     onDeleteClick={onDelete}
+     key={item.name}
+     todoName={item.name}
+     todoDate={item.date}></TodoItem>)}
     
     </>
     
@@ -12,3 +22,4 @@ const TodoLists = ({items}) => {
 }
 
 export default TodoLists
+
