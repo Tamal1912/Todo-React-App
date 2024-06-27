@@ -3,10 +3,6 @@ import TodoItem from './TodoItem'
 
 const TodoLists = ({items,onDelete}) => {
    
-  let [currentItem,setCurrentItem]=useState([items])
-   
- 
-
   return (
     <>
     {items.map(item =>

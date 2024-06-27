@@ -1,4 +1,6 @@
 import React from 'react'
+import { FaMinusCircle } from "react-icons/fa";
+
 
 const TodoItem = ({todoName,todoDate,onDeleteClick}) => {
      
@@ -13,7 +15,7 @@ const TodoItem = ({todoName,todoDate,onDeleteClick}) => {
       <h2>{todoDate}</h2>
     </div>
     <div className="col-3">
-    <button onClick={()=>onDeleteClick(todoName)} className="btn btn-error text-white">Delete</button>
+    <button onClick={()=>onDeleteClick(todoName)} className="btn btn-error text-white"><FaMinusCircle/></button>
   </div>
 </div>
 

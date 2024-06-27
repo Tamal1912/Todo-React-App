@@ -1,27 +1,45 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState } from 'react'
+import { MdAddBox } from "react-icons/md";
 
 const AddTodo = ({onInput}) => {
   
-const [todoName,setTodoName]=useState();
-const [todoDate,setTodoDate]=useState();
+  //****using useState() Hook****
 
- let handleTodoName=(event)=>{
+
+// const [todoName,setTodoName]=useState();
+// const [todoDate,setTodoDate]=useState();
+
+
+//  let handleTodoName=(event)=>{
  
-  setTodoName(event.target.value);
+//   setTodoName(event.target.value);
   
- }
+//  }
 
- let handleTodoDate=(event)=>{
+//  let handleTodoDate=(event)=>{
  
-  setTodoDate(event.target.value);
+//   setTodoDate(event.target.value);
   
- }
+//*** */  }
 
- let handleAddButtonClicked=()=>{
+
+//*Using useRef() Hook */
+
+const todoNameElm=useRef();
+const todoDateElm=useRef();
+
+ 
+
+ let handleAddButtonClicked=(event)=>{
+  event.preventDefault();
+  let todoName= todoNameElm.current.value;
+  let todoDate= todoDateElm.current.value;
   onInput(todoName,todoDate);
-  setTodoName("");
-  setTodoDate("");
+ todoNameElm.current.value="";
+ todoDateElm.current.value="";
+
+ 
  }
 
  
@@ -31,19 +49,19 @@ const [todoDate,setTodoDate]=useState();
     
 <div className="mt-10 min-w-full container text-center text-white">
 
-<div className="row text-white">
+<form className="row text-white" onSubmit={handleAddButtonClicked}>
   <div className="col-6">
-    <input onChange={handleTodoName} type="text" value={todoName}  className='px-3 py-2 rounded-lg' placeholder='Enter your todo' id="" />
+    <input ref={todoNameElm} type="text"   className='px-3 py-2 rounded-lg' placeholder='Enter your todo' id="" />
   </div>
   <div className="col-3">
-    <input onChange={handleTodoDate} type="date" value={todoDate} className='px-3 py-2 rounded-lg' name="date" id="" />
+    <input  ref={todoDateElm} type="date"  className='px-3 py-2 rounded-lg' name="date" id="" />
   </div>
   <div className="col-3">
     <button
-    onClick={handleAddButtonClicked}
-    className='border-0 rounded-md px-4 py-2 bg-lime-500 text-white' >Add</button>
+    type='submit'
+    className='border-0 rounded-md px-4 py-2 bg-lime-500 text-white' ><MdAddBox/></button>
   </div>
-</div>
+</form>
 </div>
   )
 }

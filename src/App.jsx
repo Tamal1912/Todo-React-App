@@ -13,14 +13,17 @@ function App() {
     let [todoLists,setTodoLists]=useState([]);
   
    let addInput=(itemName,itemDate)=>{
-    console.log(`name ${itemName} , date ${itemDate}`);
+    //console.log(`name ${itemName} , date ${itemDate}`);
     
-    let newTodoItems=[...todoLists,{
-      name:itemName,
-      date:itemDate
-    }]
+   
+  //** Using Functional Updates */
+    setTodoLists((currItem)=>
+      [...currItem,{
+        name:itemName,
+        date:itemDate
+      }]
 
-    setTodoLists(newTodoItems)
+    )
    }
 
    const handleDeleteButtton=(deleteTodoName)=>{
